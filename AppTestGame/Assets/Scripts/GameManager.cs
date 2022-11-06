@@ -7,18 +7,18 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Setting manager")]
-    [SerializeField] private GameObject StartDisplay;
-    [SerializeField] private GameObject GamePanel;
-    [SerializeField] private GameObject DisplayLose;
-    [SerializeField] private GameObject PlayerPrefabs;
+    [SerializeField] private GameObject startDisplay;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject displayLose;
+    [SerializeField] private GameObject playerPrefabs;
     [Header("Txt settings")]
     [SerializeField] private TextMeshProUGUI countGameTXT;
     [SerializeField] private TextMeshProUGUI resultTimeTXT;
 
     //Game
     private bool isGame; public bool IsGame => isGame;
-    private int _countGame;
-    private int _gameDifficulty;
+    private int countGame;
+    private int gameDifficulty;
 
     //Timer
     private float time;
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (PlayerPrefs.HasKey("CountGame"))
-            _countGame = PlayerPrefs.GetInt("CountGame");
+            countGame = PlayerPrefs.GetInt("CountGame");
         else
-            _countGame = 0;
+            countGame = 0;
 
         isGame = false;
     }
@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        Instantiate(PlayerPrefabs, GamePanel.transform);
-        _countGame++;
+        Instantiate(playerPrefabs, gamePanel.transform);
+        countGame++;
 
         isGame = true;
         time = 0;
@@ -59,50 +59,50 @@ public class GameManager : MonoBehaviour
         sec = (int)(time % 60);
         min = (int)(time / 60);
     }
-    public void PlayGame()
+    public void ClickPlay()
     {
         StartGame();
 
-        StartDisplay.SetActive(false);
-        GamePanel.SetActive(true);
+        startDisplay.SetActive(false);
+        gamePanel.SetActive(true);
     }
-    public void Replay()
+    public void ClickReplay()
     {
         StartGame();
 
-        DisplayLose.SetActive(false);
-        GamePanel.SetActive(true);
+        displayLose.SetActive(false);
+        gamePanel.SetActive(true);
     }
     public void LoseGame()
     {
         isGame = false;
-        countGameTXT.text = $"{_countGame}";
+        countGameTXT.text = $"{countGame}";
         resultTimeTXT.text = $"{min} : {sec}";
 
         StartCoroutine(GameOver());
     }
     public int CurrentDifficulty()
     {
-        return _gameDifficulty;
+        return gameDifficulty;
     }
     public void ClickDifficulty(int difficulty)
     {
-        _gameDifficulty = difficulty;
+        gameDifficulty = difficulty;
     }
     private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1f);
 
-        GamePanel.SetActive(false);
-        DisplayLose.SetActive(true);
+        gamePanel.SetActive(false);
+        displayLose.SetActive(true);
     }
     public void ExitInMenu()
     {
         if (isGame)
         {
             isGame = false;
-            GamePanel.SetActive(false);
-            StartDisplay.SetActive(true);
+            gamePanel.SetActive(false);
+            startDisplay.SetActive(true);
         }
     }
 
@@ -113,6 +113,6 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerPrefs.SetInt("CountGame", _countGame);
+        PlayerPrefs.SetInt("CountGame", countGame);
     }
 }

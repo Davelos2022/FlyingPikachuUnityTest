@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelGeneration : MonoBehaviour
 {
     [Header("Prefabs for level")]
-    [SerializeField] private GameObject LevelPrefab;
-    [SerializeField] private GameObject ObstraclePrefab;
+    [SerializeField] private GameObject levelPrefab;
+    [SerializeField] private GameObject obstraclePrefab;
     [Header("Settings level")]
     [SerializeField] private float speedLevel;
 
@@ -61,7 +61,7 @@ public class LevelGeneration : MonoBehaviour
         if (buildings.Count > 0)
             pos = buildings[buildings.Count - 1].transform.position + new Vector3(0, 0, distanceToDestroy);
 
-        GameObject lvlObject = Instantiate(LevelPrefab, pos, Quaternion.identity);
+        GameObject lvlObject = Instantiate(levelPrefab, pos, Quaternion.identity);
         lvlObject.transform.SetParent(transform);
         buildings.Add(lvlObject);
 
@@ -80,17 +80,17 @@ public class LevelGeneration : MonoBehaviour
             if (obstracles.Count > 0)
                 pos = new Vector3(0, Random.Range(minPosYspawn, maxPosYspawn), obstracles[obstracles.Count - 1].transform.position.z + distanceObsctracle);
 
-            GameObject obstracleObject = Instantiate(ObstraclePrefab, pos, Quaternion.Euler(0, 90, 0));
+            GameObject obstracleObject = Instantiate(obstraclePrefab, pos, Quaternion.Euler(0, 90, 0));
             obstracleObject.transform.SetParent(parent.transform);
             obstracles.Add(obstracleObject);
         }
     }
 
-    private void SetSpeed(int check)
+    private void SetSpeed()
     {
         currentDifficulty = GameManager.Instance.CurrentDifficulty();
 
-        switch (check)
+        switch (currentDifficulty)
         {
             case 1:
                 speedLevel = (float)Difficulty.Easy;
@@ -122,7 +122,7 @@ public class LevelGeneration : MonoBehaviour
 
     private void OnEnable()
     {
-        SetSpeed(currentDifficulty);
+        SetSpeed();
         CreateRoad();
         StartCoroutine(MoveRoad());
     }

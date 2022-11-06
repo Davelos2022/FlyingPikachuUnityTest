@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [SerializeField] private AudioClip[] speaksPlayer;
-    [SerializeField] private AudioClip LoseGame;
+    [SerializeField] private AudioClip loseGame;
 
     private AudioSource audioSource;
 
@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
                 audioSource.PlayOneShot(speaksPlayer[Random.Range(0, speaksPlayer.Length)]);
                 break;
             case EventSound.LoseGame:
-                audioSource.PlayOneShot(LoseGame);
+                audioSource.PlayOneShot(loseGame);
                 break;
                 
         }

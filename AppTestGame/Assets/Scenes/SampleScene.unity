@@ -1912,7 +1912,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8d238c2d1155ee24e8343244fc52f71d, type: 3}
   - {fileID: 8300000, guid: 577828890193c0f40b680d9970ec53ba, type: 3}
   - {fileID: 8300000, guid: e77079720ea25484994e1da5bf77a6ed, type: 3}
-  LoseGame: {fileID: 8300000, guid: 39a42252c7d20b6478699bcbf43e3c5a, type: 3}
+  loseGame: {fileID: 8300000, guid: 39a42252c7d20b6478699bcbf43e3c5a, type: 3}
 --- !u!1 &665449694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,8 +1945,8 @@ RectTransform:
   - {fileID: 1715847503}
   - {fileID: 443731130}
   - {fileID: 1875398448}
-  - {fileID: 2077377466}
   - {fileID: 782628376}
+  - {fileID: 2077377466}
   m_Father: {fileID: 1129741258}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2114,7 +2114,7 @@ GameObject:
   - component: {fileID: 782628378}
   - component: {fileID: 782628377}
   m_Layer: 5
-  m_Name: txt_Title (1)
+  m_Name: txt_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2133,7 +2133,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 665449695}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3201,7 +3201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -51.736267, y: -134.11475}
+  m_AnchoredPosition: {x: -51.73633, y: -134.11475}
   m_SizeDelta: {x: 383.09106, y: 561.9397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1413694864
@@ -3446,7 +3446,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1560774886}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Replay
+        m_MethodName: ClickReplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3579,10 +3579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c070cf7cfdd6249851705274055ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartDisplay: {fileID: 665449694}
-  GamePanel: {fileID: 1882680539}
-  DisplayLose: {fileID: 1490910624}
-  PlayerPrefabs: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
+  startDisplay: {fileID: 665449694}
+  gamePanel: {fileID: 1882680539}
+  displayLose: {fileID: 1490910624}
+  playerPrefabs: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
   countGameTXT: {fileID: 825059361}
   resultTimeTXT: {fileID: 378671770}
 --- !u!1 &1567034296
@@ -3916,7 +3916,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1560774886}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: ClickPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4085,8 +4085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f53e4eb172d8f499fe4a0a3f28c3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelPrefab: {fileID: 7431626127626554980, guid: 639d4425ca01d1b4997b8aeae114f7c3, type: 3}
-  ObstraclePrefab: {fileID: 8278924617315620028, guid: 02175919eeabed34abc36a396077e601, type: 3}
+  levelPrefab: {fileID: 7431626127626554980, guid: 639d4425ca01d1b4997b8aeae114f7c3, type: 3}
+  obstraclePrefab: {fileID: 8278924617315620028, guid: 02175919eeabed34abc36a396077e601, type: 3}
   speedLevel: 35
 --- !u!1 &1827111122
 GameObject:
@@ -4840,7 +4840,7 @@ RectTransform:
   m_Children:
   - {fileID: 329284412}
   m_Father: {fileID: 665449695}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
