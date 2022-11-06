@@ -101,6 +101,8 @@ public class GameManager : MonoBehaviour
 
         gamePanel.SetActive(false);
         displayLose.SetActive(true);
+
+        yield break;
     }
     public int CurrentDifficulty()
     {
