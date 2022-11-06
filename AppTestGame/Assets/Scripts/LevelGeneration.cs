@@ -73,7 +73,7 @@ public class LevelGeneration : MonoBehaviour
     private void CreateObstracles(GameObject parent)
     {
         float maxPosYspawn = 12f;
-        float minPosYspawn = -20f;
+        float minPosYspawn = -45f;
 
         Vector3 pos = new Vector3(0, Random.Range(minPosYspawn, maxPosYspawn), distanceObsctracle);
 
