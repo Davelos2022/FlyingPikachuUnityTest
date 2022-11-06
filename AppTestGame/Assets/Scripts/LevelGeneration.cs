@@ -15,15 +15,16 @@ public class LevelGeneration : MonoBehaviour
 
     //Road settings
     private int currentDifficulty;
-    private float maxSpeed = 80f;
+    private enum Difficulty { Easy = 35, Medium = 55, Hard = 65 };
+    private float maxSpeed = 85f;
     private float distanceToDestroy = 650f;
     private float disnanceToNewRoad = 250f;
-    private float increaseSpeed = 5f;
+    private float increaseSpeed = 8f;
     //Obstracle settings
     private float maxObsctracle = 6f;
     private float distanceObsctracle = 100f;
 
-    IEnumerator MoveRoad()
+    private IEnumerator MoveRoad()
     {
         while (GameManager.Instance.IsGame)
         {
@@ -31,14 +32,7 @@ public class LevelGeneration : MonoBehaviour
                 buildings[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
             if (buildings[buildings.Count - 1].transform.position.z < -disnanceToNewRoad)
-            {
-                if (speedLevel >= maxSpeed)
-                    speedLevel = maxSpeed;
-                else
-                    speedLevel += increaseSpeed;
-
                 CreateRoad();
-            }
 
             if (buildings[0].transform.position.z <= -distanceToDestroy)
             {
@@ -57,6 +51,11 @@ public class LevelGeneration : MonoBehaviour
 
     private void CreateRoad()
     {
+        if (speedLevel >= maxSpeed)
+            speedLevel = maxSpeed;
+        else
+            speedLevel += increaseSpeed;
+
         Vector3 pos = Vector3.zero;
 
         if (buildings.Count > 0)
@@ -92,16 +91,16 @@ public class LevelGeneration : MonoBehaviour
         switch (check)
         {
             case 1:
-                speedLevel = 35f;
+                speedLevel = (float)Difficulty.Easy;
                 break;
             case 2:
-                speedLevel = 55f;
+                speedLevel = (float)Difficulty.Medium;
                 break;
             case 3:
-                speedLevel = 65f;
+                speedLevel = (float)Difficulty.Hard;
                 break;
             default:
-                speedLevel = 35f;
+                speedLevel = (float)Difficulty.Easy;
                 break;
         }
     }
