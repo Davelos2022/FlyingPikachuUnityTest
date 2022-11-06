@@ -16,12 +16,12 @@ public class LevelGeneration : MonoBehaviour
     //Road settings
     private int currentDifficulty;
     private enum Difficulty { Easy = 35, Medium = 55, Hard = 65 };
-    private float maxSpeed = 85f;
+    private float maxSpeed = 80f;
     private float distanceToDestroy = 650f;
     private float disnanceToNewRoad = 250f;
     private float increaseSpeed = 8f;
     //Obstracle settings
-    private float maxObsctracle = 6f;
+    private int maxObsctracle = 6;
     private float distanceObsctracle = 100f;
 
     private IEnumerator MoveRoad()
@@ -88,6 +88,8 @@ public class LevelGeneration : MonoBehaviour
 
     private void SetSpeed(int check)
     {
+        currentDifficulty = GameManager.Instance.CurrentDifficulty();
+
         switch (check)
         {
             case 1:
@@ -110,7 +112,6 @@ public class LevelGeneration : MonoBehaviour
         for (int x = 0; x < buildings.Count; x++)
             Destroy(buildings[x]);
 
-
         for (int x = 0; x < obstracles.Count; x++)
             Destroy(obstracles[x]);
 
@@ -121,8 +122,6 @@ public class LevelGeneration : MonoBehaviour
 
     private void OnEnable()
     {
-        currentDifficulty = GameManager.Instance.PreLoadDifficulty();
-
         SetSpeed(currentDifficulty);
         CreateRoad();
         StartCoroutine(MoveRoad());

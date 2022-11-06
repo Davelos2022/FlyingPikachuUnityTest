@@ -59,18 +59,18 @@ public class GameManager : MonoBehaviour
         sec = (int)(time % 60);
         min = (int)(time / 60);
     }
-    public void Replay()
-    {
-        StartGame();
-
-        DisplayLose.SetActive(false);
-        GamePanel.SetActive(true);
-    }
     public void PlayGame()
     {
         StartGame();
 
         StartDisplay.SetActive(false);
+        GamePanel.SetActive(true);
+    }
+    public void Replay()
+    {
+        StartGame();
+
+        DisplayLose.SetActive(false);
         GamePanel.SetActive(true);
     }
     public void LoseGame()
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(GameOver());
     }
-    public int PreLoadDifficulty()
+    public int CurrentDifficulty()
     {
         return _gameDifficulty;
     }
