@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject destroyEffect;
 
     private Rigidbody rbPlayer;
+
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody>();
@@ -15,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        AudioManager.Instance?.PlaySound(AudioManager.EventSound.Say);
         CreateEffect(spawnEffect, transform.position);
     }
     void FixedUpdate()
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstracle"))
         {
-            AudioManager.Instance?.PlaySound(AudioManager.EventSound.LoseGame);
             GameManager.Instance?.LoseGame();
 
             CreateEffect(destroyEffect, transform.position);

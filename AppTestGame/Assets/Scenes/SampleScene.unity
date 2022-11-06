@@ -3201,7 +3201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -51.73633, y: -134.11475}
+  m_AnchoredPosition: {x: -51.73639, y: -134.11475}
   m_SizeDelta: {x: 383.09106, y: 561.9397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1413694864
@@ -3585,6 +3585,7 @@ MonoBehaviour:
   playerPrefabs: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
   countGameTXT: {fileID: 825059361}
   resultTimeTXT: {fileID: 378671770}
+  audioManager: {fileID: 549447829}
 --- !u!1 &1567034296
 GameObject:
   m_ObjectHideFlags: 0

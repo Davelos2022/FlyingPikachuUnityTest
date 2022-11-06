@@ -3,17 +3,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public enum EventSound { Say, LoseGame }
-    public static AudioManager Instance;
 
     [SerializeField] private AudioClip[] speaksPlayer;
     [SerializeField] private AudioClip loseGame;
 
     private AudioSource audioSource;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     void Start()
     {

@@ -18,8 +18,9 @@ public class LevelGeneration : MonoBehaviour
     private enum Difficulty { Easy = 35, Medium = 55, Hard = 65 };
     private float maxSpeed = 100f;
     private float distanceToDestroy = 650f;
-    private float disnanceToNewRoad = 250f;
+    private float disnanceToNewObj = 250f;
     private float increaseSpeed = 7f;
+
     //Obstracle settings
     private int maxObsctracle = 6;
     private float distanceObsctracle = 100f;
@@ -31,7 +32,7 @@ public class LevelGeneration : MonoBehaviour
             for (int x = 0; x < levelObjects.Count; x++)
                 levelObjects[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
-            if (levelObjects[levelObjects.Count - 1].transform.position.z < -disnanceToNewRoad)
+            if (levelObjects[levelObjects.Count - 1].transform.position.z <= -disnanceToNewObj)
             {
                 if (speedLevel >= maxSpeed)
                     speedLevel = maxSpeed;
