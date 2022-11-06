@@ -492,7 +492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -200}
+  m_AnchoredPosition: {x: -213.6, y: -237.6}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &120886680
@@ -3580,8 +3580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDisplay: {fileID: 665449694}
-  gamePanel: {fileID: 1882680539}
   displayLose: {fileID: 1490910624}
+  gamePanel: {fileID: 1882680539}
   playerPrefabs: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
   countGameTXT: {fileID: 825059361}
   resultTimeTXT: {fileID: 378671770}
