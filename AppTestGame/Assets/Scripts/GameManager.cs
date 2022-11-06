@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     [Header("Txt settings")]
     [SerializeField] private TextMeshProUGUI countGameTXT;
     [SerializeField] private TextMeshProUGUI resultTimeTXT;
-    [Header("Link to AudioManager")]
-    [SerializeField] private AudioManager audioManager;
 
     //Game
     private bool isGame; public bool IsGame => isGame;
@@ -49,7 +47,8 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(playerPrefabs, gamePanel.transform);
         countGame++;
-        audioManager.PlaySound(AudioManager.EventSound.Say);
+
+        AudioManager.Instance?.PlaySound(AudioManager.EventSound.Say);
 
         isGame = true;
         time = 0;
@@ -96,7 +95,8 @@ public class GameManager : MonoBehaviour
         isGame = false;
         countGameTXT.text = $"{countGame}";
         resultTimeTXT.text = $"{min} : {sec}";
-        audioManager.PlaySound(AudioManager.EventSound.LoseGame);
+
+        AudioManager.Instance?.PlaySound(AudioManager.EventSound.LoseGame);
 
         StartCoroutine(GameOver());
     }
