@@ -24,10 +24,12 @@ public class GameManager : MonoBehaviour
     private float time;
     private int min;
     private int sec;
+
     private void Awake()
     {
         Instance = this;
     }
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("CountGame"))
@@ -37,11 +39,13 @@ public class GameManager : MonoBehaviour
 
         isGame = false;
     }
+
     private void Update()
     {
         if (isGame)
             Timer();
     }
+
     public void StartGame()
     {
         Instantiate(playerPrefabs, gamePanel.transform);
@@ -52,27 +56,7 @@ public class GameManager : MonoBehaviour
         sec = 0;
         min = 0;
     }
-    public void Timer()
-    {
-        time += Time.deltaTime;
 
-        sec = (int)(time % 60);
-        min = (int)(time / 60);
-    }
-    public void ClickPlay()
-    {
-        StartGame();
-
-        startDisplay.SetActive(false);
-        gamePanel.SetActive(true);
-    }
-    public void ClickReplay()
-    {
-        StartGame();
-
-        displayLose.SetActive(false);
-        gamePanel.SetActive(true);
-    }
     public void LoseGame()
     {
         isGame = false;
@@ -81,14 +65,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(GameOver());
     }
-    public int CurrentDifficulty()
-    {
-        return gameDifficulty;
-    }
-    public void ClickDifficulty(int difficulty)
-    {
-        gameDifficulty = difficulty;
-    }
+
     private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1f);
@@ -96,6 +73,31 @@ public class GameManager : MonoBehaviour
         gamePanel.SetActive(false);
         displayLose.SetActive(true);
     }
+
+    private void Timer()
+    {
+        time += Time.deltaTime;
+
+        sec = (int)(time % 60);
+        min = (int)(time / 60);
+    }
+
+    public void ClickPlay()
+    {
+        StartGame();
+
+        startDisplay.SetActive(false);
+        gamePanel.SetActive(true);
+    }
+
+    public void ClickReplay()
+    {
+        StartGame();
+
+        displayLose.SetActive(false);
+        gamePanel.SetActive(true);
+    }
+
     public void ExitInMenu()
     {
         if (isGame)
@@ -115,4 +117,15 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("CountGame", countGame);
     }
+
+    public int CurrentDifficulty()
+    {
+        return gameDifficulty;
+    }
+
+    public void ClickDifficulty(int difficulty)
+    {
+        gameDifficulty = difficulty;
+    }
 }
+
