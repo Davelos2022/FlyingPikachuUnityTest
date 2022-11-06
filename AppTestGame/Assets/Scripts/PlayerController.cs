@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         AudioManager.Instance?.PlaySound(AudioManager.EventSound.Say);
-        CreateEffect(spawnEffect, transform, transform.position);
+        CreateEffect(spawnEffect, transform.position);
     }
     void FixedUpdate()
     {
@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(rbPlayer.velocity.y, rbPlayer.velocity.y, maxDistanceY), rbPlayer.velocity.z);
     }
 
-    private void CreateEffect(GameObject effectPrefab, Transform parent, Vector3 position)
+    private void CreateEffect(GameObject effectPrefab, Vector3 position)
     {
-        GameObject effect = Instantiate(effectPrefab, parent);
+        GameObject effect = Instantiate(effectPrefab);
         effect.transform.position = position;
         return;
     }
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance?.PlaySound(AudioManager.EventSound.LoseGame);
             GameManager.Instance?.LoseGame();
 
-            CreateEffect(destroyEffect, transform.parent, transform.position);
+            CreateEffect(destroyEffect, transform.position);
             Destroy(gameObject);
         }
     }
