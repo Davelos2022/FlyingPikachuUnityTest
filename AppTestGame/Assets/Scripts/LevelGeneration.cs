@@ -10,16 +10,16 @@ public class LevelGeneration : MonoBehaviour
     [Header("Settings level")]
     [SerializeField] private float speedLevel;
 
-    private List<GameObject> buildings = new List<GameObject>();
+    private List<GameObject> levelObjects = new List<GameObject>();
     private List<GameObject> obstracles = new List<GameObject>();
 
     //Road settings
     private int currentDifficulty;
     private enum Difficulty { Easy = 35, Medium = 55, Hard = 65 };
-    private float maxSpeed = 80f;
+    private float maxSpeed = 100f;
     private float distanceToDestroy = 650f;
     private float disnanceToNewRoad = 250f;
-    private float increaseSpeed = 8f;
+    private float increaseSpeed = 7f;
     //Obstracle settings
     private int maxObsctracle = 6;
     private float distanceObsctracle = 100f;
@@ -28,26 +28,26 @@ public class LevelGeneration : MonoBehaviour
     {
         while (GameManager.Instance.IsGame)
         {
-            for (int x = 0; x < buildings.Count; x++)
-                buildings[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
+            for (int x = 0; x < levelObjects.Count; x++)
+                levelObjects[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
-            if (buildings[buildings.Count - 1].transform.position.z < -disnanceToNewRoad)
+            if (levelObjects[levelObjects.Count - 1].transform.position.z < -disnanceToNewRoad)
             {
-                CreateRoad();
-
                 if (speedLevel >= maxSpeed)
                     speedLevel = maxSpeed;
                 else
                     speedLevel += increaseSpeed;
+
+                CreateRoad();
             }
 
-            if (buildings[0].transform.position.z <= -distanceToDestroy)
+            if (levelObjects[0].transform.position.z <= -distanceToDestroy)
             {
                 for (int x = 0; x < maxObsctracle; x++)
                     obstracles.Remove(obstracles[x]);
 
-                Destroy(buildings[0]);
-                buildings.Remove(buildings[0]);
+                Destroy(levelObjects[0]);
+                levelObjects.Remove(levelObjects[0]);
             }
 
             yield return null;
@@ -60,19 +60,19 @@ public class LevelGeneration : MonoBehaviour
     {
         Vector3 pos = Vector3.zero;
 
-        if (buildings.Count > 0)
-            pos = buildings[buildings.Count - 1].transform.position + new Vector3(0, 0, distanceToDestroy);
+        if (levelObjects.Count > 0)
+            pos = levelObjects[levelObjects.Count - 1].transform.position + new Vector3(0, 0, distanceToDestroy);
 
         GameObject lvlObject = Instantiate(levelPrefab, pos, Quaternion.identity);
         lvlObject.transform.SetParent(transform);
-        buildings.Add(lvlObject);
+        levelObjects.Add(lvlObject);
 
         CreateObstracles(lvlObject);
     }
 
     private void CreateObstracles(GameObject parent)
     {
-        float maxPosYspawn = 12f;
+        float maxPosYspawn = 15f;
         float minPosYspawn = -45f;
 
         Vector3 pos = new Vector3(0, Random.Range(minPosYspawn, maxPosYspawn), distanceObsctracle);
@@ -111,15 +111,15 @@ public class LevelGeneration : MonoBehaviour
 
     private void ClearLevel()
     {
-        for (int x = 0; x < buildings.Count; x++)
-            Destroy(buildings[x]);
+        for (int x = 0; x < levelObjects.Count; x++)
+            Destroy(levelObjects[x]);
 
         for (int x = 0; x < obstracles.Count; x++)
             Destroy(obstracles[x]);
 
         speedLevel = 0;
         obstracles.Clear();
-        buildings.Clear();
+        levelObjects.Clear();
     }
 
     private void OnEnable()
