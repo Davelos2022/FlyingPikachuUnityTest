@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
     public enum EventSound { Say, LoseGame }
 
     [SerializeField] private AudioClip[] speaksPlayer;
@@ -10,10 +9,6 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
