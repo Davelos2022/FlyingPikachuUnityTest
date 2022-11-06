@@ -56,7 +56,6 @@ public class LevelGeneration : MonoBehaviour
 
         yield break;
     }
-
     private void CreateRoad()
     {
         Vector3 pos = Vector3.zero;
@@ -70,7 +69,6 @@ public class LevelGeneration : MonoBehaviour
 
         CreateObstracles(lvlObject);
     }
-
     private void CreateObstracles(GameObject parent)
     {
         float maxPosYspawn = 15f;
@@ -88,7 +86,6 @@ public class LevelGeneration : MonoBehaviour
             obstracles.Add(obstracleObject);
         }
     }
-
     private void SetSpeed()
     {
         currentDifficulty = GameManager.Instance.CurrentDifficulty();
@@ -109,27 +106,21 @@ public class LevelGeneration : MonoBehaviour
                 break;
         }
     }
-
     private void ClearLevel()
     {
         for (int x = 0; x < levelObjects.Count; x++)
             Destroy(levelObjects[x]);
 
-        for (int x = 0; x < obstracles.Count; x++)
-            Destroy(obstracles[x]);
-
         speedLevel = 0;
         obstracles.Clear();
         levelObjects.Clear();
     }
-
     private void OnEnable()
     {
         SetSpeed();
         CreateRoad();
         StartCoroutine(MoveRoad());
     }
-
     private void OnDisable()
     {
         ClearLevel();

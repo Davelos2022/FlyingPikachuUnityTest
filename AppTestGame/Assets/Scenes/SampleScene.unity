@@ -3582,10 +3582,9 @@ MonoBehaviour:
   startDisplay: {fileID: 665449694}
   displayLose: {fileID: 1490910624}
   gamePanel: {fileID: 1882680539}
-  playerPrefabs: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
+  playerPrefab: {fileID: 8776795362377253476, guid: 201f24b5bbd06fd4a9581d6139be2694, type: 3}
   countGameTXT: {fileID: 825059361}
   resultTimeTXT: {fileID: 378671770}
-  audioManager: {fileID: 549447829}
 --- !u!1 &1567034296
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject startDisplay;
     [SerializeField] private GameObject displayLose;
     [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject playerPrefabs;
+    [SerializeField] private GameObject playerPrefab;
     [Header("Txt settings")]
     [SerializeField] private TextMeshProUGUI countGameTXT;
     [SerializeField] private TextMeshProUGUI resultTimeTXT;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        Instantiate(playerPrefabs, gamePanel.transform);
+        Instantiate(playerPrefab, gamePanel.transform);
         countGame++;
 
         AudioManager.Instance?.PlaySound(AudioManager.EventSound.Say);
@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
             startDisplay.SetActive(true);
         }
     }
-
     public void ExitGame()
     {
         Application.Quit();
@@ -117,7 +116,6 @@ public class GameManager : MonoBehaviour
     {
         gameDifficulty = difficulty;
     }
-
     private void OnDisable()
     {
         PlayerPrefs.SetInt("CountGame", countGame);

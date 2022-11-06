@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     {
         rbPlayer = GetComponent<Rigidbody>();
     }
-
     private void OnEnable()
     {
         CreateEffect(spawnEffect, transform.position);
@@ -35,14 +34,12 @@ public class PlayerController : MonoBehaviour
         rbPlayer.velocity = new Vector3(rbPlayer.velocity.x, 
             Mathf.Clamp(rbPlayer.velocity.y, rbPlayer.velocity.y, maxDistanceY), rbPlayer.velocity.z);
     }
-
     private void CreateEffect(GameObject effectPrefab, Vector3 position)
     {
         GameObject effect = Instantiate(effectPrefab);
         effect.transform.position = position;
         return;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstracle"))
