@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Txt settings")]
     [SerializeField] private TextMeshProUGUI countGameTXT;
     [SerializeField] private TextMeshProUGUI resultTimeTXT;
-    [Header("Lin to AudioManager")]
+    [Header("Link to AudioManager")]
     [SerializeField] private AudioManager audioManager;
 
     //Game
