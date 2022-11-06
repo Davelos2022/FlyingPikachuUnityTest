@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject destroyEffect;
 
     private Rigidbody rbPlayer;
-
-
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody>();
@@ -24,7 +22,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();   
     }
-
     private void Move()
     {
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.UpArrow))

@@ -24,12 +24,10 @@ public class GameManager : MonoBehaviour
     private float time;
     private int min;
     private int sec;
-
     private void Awake()
     {
         Instance = this;
     }
-
     private void Start()
     {
         if (PlayerPrefs.HasKey("CountGame"))
@@ -39,13 +37,11 @@ public class GameManager : MonoBehaviour
 
         isGame = false;
     }
-
     private void Update()
     {
         if (isGame)
             Timer();
     }
-
     public void StartGame()
     {
         Instantiate(PlayerPrefabs, GamePanel.transform);
@@ -56,7 +52,6 @@ public class GameManager : MonoBehaviour
         sec = 0;
         min = 0;
     }
-
     public void Timer()
     {
         time += Time.deltaTime;
@@ -64,7 +59,6 @@ public class GameManager : MonoBehaviour
         sec = (int)(time % 60);
         min = (int)(time / 60);
     }
-
     public void Replay()
     {
         StartGame();
@@ -72,7 +66,6 @@ public class GameManager : MonoBehaviour
         DisplayLose.SetActive(false);
         GamePanel.SetActive(true);
     }
-
     public void PlayGame()
     {
         StartGame();
@@ -80,7 +73,6 @@ public class GameManager : MonoBehaviour
         StartDisplay.SetActive(false);
         GamePanel.SetActive(true);
     }
-
     public void LoseGame()
     {
         isGame = false;
@@ -93,12 +85,10 @@ public class GameManager : MonoBehaviour
     {
         return _gameDifficulty;
     }
-
     public void ClickDifficulty(int difficulty)
     {
         _gameDifficulty = difficulty;
     }
-
     private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1f);
@@ -106,7 +96,6 @@ public class GameManager : MonoBehaviour
         GamePanel.SetActive(false);
         DisplayLose.SetActive(true);
     }
-
     public void ExitInMenu()
     {
         if (isGame)
