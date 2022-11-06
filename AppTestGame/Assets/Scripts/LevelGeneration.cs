@@ -32,7 +32,14 @@ public class LevelGeneration : MonoBehaviour
                 buildings[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
             if (buildings[buildings.Count - 1].transform.position.z < -disnanceToNewRoad)
+            {
                 CreateRoad();
+
+                if (speedLevel >= maxSpeed)
+                    speedLevel = maxSpeed;
+                else
+                    speedLevel += increaseSpeed;
+            }
 
             if (buildings[0].transform.position.z <= -distanceToDestroy)
             {
@@ -51,11 +58,6 @@ public class LevelGeneration : MonoBehaviour
 
     private void CreateRoad()
     {
-        if (speedLevel >= maxSpeed)
-            speedLevel = maxSpeed;
-        else
-            speedLevel += increaseSpeed;
-
         Vector3 pos = Vector3.zero;
 
         if (buildings.Count > 0)
