@@ -19,6 +19,7 @@ public class LevelGeneration : MonoBehaviour
     private int currentDifficulty;
     private float maxSpeed = 100f;
     private float increaseSpeed = 7f;
+    private float distanceToNewSpawn;
 
     //Obstracle settings 
     private int maxObsctracle = 6;
@@ -31,7 +32,7 @@ public class LevelGeneration : MonoBehaviour
             for (int x = 0; x < levelObjects.Count; x++)
                 levelObjects[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
-            if (levelObjects[levelObjects.Count - 1].transform.position.z <= -GetDistanceNewSpawn())
+            if (levelObjects[levelObjects.Count - 1].transform.position.z <= -distanceToNewSpawn))
             {
                 if (speedLevel >= maxSpeed)
                     speedLevel = maxSpeed;
@@ -85,9 +86,9 @@ public class LevelGeneration : MonoBehaviour
             obstracles.Add(obstracleObject);
         }
     }
-    private float GetDistanceNewSpawn()
+    private float GetDistanceNewSpawn(float distance)
     {
-        float distance = levelLength / 2;
+        distance = levelLength / 2;
         return distance;
     }
     private void SetSpeed()
@@ -123,7 +124,9 @@ public class LevelGeneration : MonoBehaviour
     private void OnEnable()
     {
         SetSpeed();
+        GetDistanceNewSpawn(distanceToNewSpawn);
         CreateRoad();
+
         StartCoroutine(MoveRoad());
     }
     private void OnDisable()
