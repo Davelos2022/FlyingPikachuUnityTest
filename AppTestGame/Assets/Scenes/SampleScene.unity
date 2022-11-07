@@ -1567,7 +1567,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 300
+  far clip plane: 500
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -3170,7 +3170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -51.73639, y: -134.11475}
+  m_AnchoredPosition: {x: -51.736267, y: -134.11475}
   m_SizeDelta: {x: 383.09106, y: 561.9397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1413694864
@@ -4056,6 +4056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPrefab: {fileID: 7431626127626554980, guid: 639d4425ca01d1b4997b8aeae114f7c3, type: 3}
   obstraclePrefab: {fileID: 8278924617315620028, guid: 02175919eeabed34abc36a396077e601, type: 3}
+  levelLength: 650
   speedLevel: 35
 --- !u!1 &1827111122
 GameObject:
