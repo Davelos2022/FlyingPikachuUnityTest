@@ -32,7 +32,7 @@ public class LevelGeneration : MonoBehaviour
             for (int x = 0; x < levelObjects.Count; x++)
                 levelObjects[x].transform.Translate(-Vector3.forward * speedLevel * Time.deltaTime);
 
-            if (levelObjects[levelObjects.Count - 1].transform.position.z <= -distanceToNewSpawn))
+            if (levelObjects[levelObjects.Count - 1].transform.position.z <= -distanceToNewSpawn)
             {
                 if (speedLevel >= maxSpeed)
                     speedLevel = maxSpeed;
