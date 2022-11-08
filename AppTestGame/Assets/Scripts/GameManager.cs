@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Instantiate(playerPrefab, gamePanel.transform);
-        countGame++;
 
         audioManager.PlaySound(AudioManager.EventSound.Say);
 
@@ -94,7 +93,7 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         isGame = false;
-        countGameTXT.text = $"{countGame}";
+        countGameTXT.text = $"{++countGame}";
         resultTimeTXT.text = $"{min} : {sec}";
 
         audioManager.PlaySound(AudioManager.EventSound.LoseGame);
@@ -110,7 +109,7 @@ public class GameManager : MonoBehaviour
 
         yield break;
     }
-    public int CurrentDifficulty()
+    public int GetCurrentDifficulty()
     {
         return gameDifficulty;
     }
@@ -118,7 +117,8 @@ public class GameManager : MonoBehaviour
     {
         gameDifficulty = difficulty;
     }
-    private void OnDisable()
+
+    private void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("CountGame", countGame);
     }

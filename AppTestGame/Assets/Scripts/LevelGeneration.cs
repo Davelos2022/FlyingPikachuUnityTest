@@ -24,6 +24,8 @@ public class LevelGeneration : MonoBehaviour
     //Obstracle settings 
     private int maxObsctracle = 6;
     private float distanceObsctracle = 100f;
+    private float maxPosYspawn = 15f;
+    private float minPosYspawn = -45f;
 
     private IEnumerator MoveRoad()
     {
@@ -71,9 +73,6 @@ public class LevelGeneration : MonoBehaviour
     }
     private void CreateObstracles(GameObject parent)
     {
-        float maxPosYspawn = 15f;
-        float minPosYspawn = -45f;
-
         Vector3 pos = new Vector3(0, Random.Range(minPosYspawn, maxPosYspawn), distanceObsctracle);
 
         for (int x = 0; x < maxObsctracle; x++)
@@ -93,7 +92,7 @@ public class LevelGeneration : MonoBehaviour
     }
     private void SetSpeed()
     {
-        currentDifficulty = GameManager.Instance.CurrentDifficulty();
+        currentDifficulty = GameManager.Instance.GetCurrentDifficulty();
 
         switch (currentDifficulty)
         {
